@@ -159,7 +159,7 @@ export const asyncRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        path: 'https://github.com/basicworld/vue-admin-template-cn/',
         meta: { title: 'External Link', icon: 'link' }
       }
     ]

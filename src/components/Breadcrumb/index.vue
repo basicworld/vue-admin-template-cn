@@ -27,17 +27,20 @@ export default {
     this.getBreadcrumb()
   },
   methods: {
+    // 方法：获取Breadcrumb路由
     getBreadcrumb() {
       // only show routes with meta.title
+      // 只展示meta.title不为空的路由
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
-      const first = matched[0]
-
+      const first = matched[0] // 第一个路由
+      // 如果第一个路由不是Dashboard，就把Dashboard添加为第一个路由
       if (!this.isDashboard(first)) {
         matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
       }
 
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
     },
+    // 方法：是否是Dashboard页面
     isDashboard(route) {
       const name = route && route.name
       if (!name) {
