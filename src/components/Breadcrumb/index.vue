@@ -27,7 +27,7 @@ export default {
     this.getBreadcrumb()
   },
   methods: {
-    // 方法：获取Breadcrumb路由
+    // 方法：获取导航面包屑Breadcrumb
     getBreadcrumb() {
       // only show routes with meta.title
       // 只展示meta.title不为空的路由
@@ -35,7 +35,9 @@ export default {
       const first = matched[0] // 第一个路由
       // 如果第一个路由不是Dashboard，就把Dashboard添加为第一个路由
       if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+        console.log('not dashboard!')
+        console.log(first)
+        matched = [{ path: '/dashboard', meta: { title: '仪表盘' }}].concat(matched)
       }
 
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
@@ -46,7 +48,7 @@ export default {
       if (!name) {
         return false
       }
-      return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
+      return (name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase())
     },
     pathCompile(path) {
       // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561
